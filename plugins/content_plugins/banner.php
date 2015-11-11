@@ -4,7 +4,7 @@
 		
 		02-01-2013	rasmus@3kings.dk	draft
 	*/
-		
+	
 	content_plugin_register('banner', 'content_show_banner', 'Reklamer');
 	
 	function content_show_banner()

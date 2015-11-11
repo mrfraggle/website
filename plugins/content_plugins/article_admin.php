@@ -43,7 +43,7 @@
 		<h2>".term('article_placement')."</h2>
 		".term('article_weight')."<br> <input type=text name=weight value=\"{$article['weight']}\"><br>
 		".term('article_parent')."<br> <input type=text name=parent_aid value=\"{$article['parent_aid']}\"><br>
-		<input type=submit value=\"".term('article_save')."\">
+		<input type=submit value=\"".term('article_save')."\" class=\"btn\">
 		</form>
 		<h2>Filer</h2>
 		<iframe src=\"/plugins/content_plugins/article_admin_upload.php?aid=$aid\" frameborder=0 width=100% height=200px></iframe>

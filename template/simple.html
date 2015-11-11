@@ -1,91 +1,474 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
 	<title>RTD | %%TITLE%%</title>
-	<link rel="stylesheet" href="/scripts/jquery/css/cupertino/jquery-ui-1.9.1.custom.min.css"/>
-	
-	
-	<script src="/scripts/ckeditor/ckeditor.js"></script>
-  	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-  
-	<script src="http://cdn.jsdelivr.net/lightbox2/2.51/lightbox.js"></script>
-	<link href="http://cdn.jsdelivr.net/lightbox2/2.51/lightbox.css" rel="stylesheet" />
-  	<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>	
-	<script src="/scripts/timepicker/timepicker.js"></script>
-	
-	<script type="text/javascript" src="/template/js/actions.js"></script>
-	<script type="text/javascript" src="/template/js/mobile.js"></script>
-
-	
-
-	<script type="text/javascript" src="/scripts/nivo-slider/jquery.nivo.slider.js"></script>
-	
-  	<link rel="shortcut icon" href="/img/rtdnew_favicon.gif" type="image/x-icon" />
-	<link rel="stylesheet" type="text/css" href="/template/css/rtl_danmark1.css"> 
+    <!-- Mobile Metas -->      
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="shortcut icon" href="/img/rtdnew_favicon.gif" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/template/css/rtl_danmark1.css">
 
     <link rel="stylesheet" href="/scripts/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="/scripts/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
 
-	  
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/template/css/font-awesome.css">
+    <link rel="stylesheet" href="/template/css/font-style.css">
+    <!-- Open Sans fonts -->
+	<link rel="stylesheet"  href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800">
+    
+	<link rel="stylesheet" href="/template/css/bootstrap.min.css" />
+    <!-- Theme CSS -->
+	<link rel="stylesheet" href="/template/css/theme.min.css">
+	<link rel="stylesheet" href="/template/css/theme-elements.min.css">
+    <link rel="stylesheet" href="/template/css/animate.min.css">
+    <link rel="stylesheet" href="/template/css/color/blue.css">
+
+    <!-- Slider revolution -->
+	<link rel="stylesheet" href="/template/css/settings.css">
+
+	<!-- Your styles -->
+    <link rel="stylesheet" href="/template/css/styles.css">
+    
+    <link rel="stylesheet" href="/scripts/jquery/css/cupertino/jquery-ui-1.9.1.custom.css"/>
+	
+    <script src="http://code.jquery.com/jquery-1.11.3.js"></script>
+    <script src="/scripts/ckeditor/ckeditor.js"></script>  	    
+    
+  	<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+	<script src="/scripts/timepicker/timepicker.js"></script>
+
+	<script type="text/javascript" src="/template/js/actions.js"></script>
+	<script type="text/javascript" src="/template/js/mobile.js"></script>
+
+	<script type="text/javascript" src="/scripts/nivo-slider/jquery.nivo.slider.js"></script>
+        
+    <script type="text/javascript" src="/template/js/jquery-ui-1.10.4.custom.min.js"></script>
+  	
+    <style>
+	#page-content .col-xs-12#banners {margin: 0 30px 0 0;}
+	/*#page-content.not_home {padding:55px;}*/
+	#page-content .container #data, #page-content .container ul#addrole {display: inline-block;}
+	#page-content .container form, #page-content .container #calendar {display: inline-block; width:70%;}
+	#page-content .container table {width:70%;}
+    #page-content .container.clubpg_last_sec table {width:100%;}
+    #page-content .container table.cke_editor {width:100%;}
+	#page-content .container hr {display:inline;}
+	/*#page-content.not_home .container .col-xs-12.col-md-10 {display: inline-block; width:70%;}*/
+	#page-content.not_home .container .col-xs-12.col-md-10 .title-section h1, #page-content.not_home .container .col-xs-12.col-md-10 .title-section ul li {text-align:left;}
+	
+	#page-content .container form input[type="checkbox"] {position:relative; visibility:visible;display:inline-block; margin:5px;}
+	
+	#page-content .container .right-part .grid-wrap #projects .club .meta a {font-size:12px;}
+    #latestmemberss #members .col-sm-2.col-md-2  {min-height:300px;}
+	</style>
+    
+    
 </head>
-<body bgcolor=black>
+<body bgcolor="black" class="index" style="background-image: url(http://jets.funcoders.com/CORE/uploads/images/page/backgrounds/5/background.jpg); background-attachment: fixed; background-size: cover; background-repeat: no-repeat;">
 
-<div style="background-color:white">
+<div id="boxed">
+
+<header id="header" class="sticky">
+<aside class="topbar" style="margin-top: 0px;">
+    <div class="container">
+        %%LOGIN_BTN%%
+        <ul class="social">
+            <li><a href="#" class="facebook"></a></li>
+        </ul><!-- .social -->
+    </div><!-- .container -->
+</aside><!-- .topbar -->
+<div class="navbar megamenu-width">
+    <div class="container">
+
+        <aside id="main-search">
+            <form method="GET" action="/">
+                <a class="close" href="#"><i class="icomoon-close"></i></a>
+                <div class="form-field">
+                    <div class="placeholder">
+                        <label for="query">search on site...</label>
+                        <input type="text" id="search" name="search" class="form-control">
+                        <!--<a href=?biz>Branchekartotek</a>-->
+                    </div>
+                </div>
+            </form>
+        </aside><!-- #main-search -->
+
+        <div class="navbar-inner" style="margin-top: 30px;">
+
+            <a class="logo" href="/" style="height: 40px;">
+                <img alt="Round Table Denmark" src="/template/images/logo.png">
+            </a><!-- .logo -->
 
 
-<table border="0" cellspacing=5 cellpadding=0 align="center">
-	<!--- menu --->
+            <ul id="mobile-menu">
+                <li><a href="#login-register" data-toggle="modal" title="Log in">Log ind</a></li>
+
+                <li>
+                    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-reorder"></i>
+                    </button>
+                </li>
+                <li><a class="btn-search" href="#"><i class="fa fa-search"></i></a></li>
+            </ul><!-- #mobile-menu -->
+
+            <!--<ul id="mobile-menu">
+                %%ADMINBOX%%
+                %%ARTICLEBOX%%
+            </ul> --><!-- #mobile-menu -->
+
+            <!--<ul class="collapse navbar-collapse nav slide custom" id="main-menu">  -->
+               
+                %%ARTICLEBOX%%
+                <!--<li class="search-nav" style="padding-bottom: 30px;">
+                <a class="btn-search" href="#"><i class="fa fa-search"></i></a>
+            </li>-->
+            <!--</ul>--><!-- #main-menu -->
+
+        </div><!-- .navbar-inner -->
+
+    </div><!-- .container -->
+</div><!-- .navbar -->
+
+</header>
+<!--
+<table border="0" cellspacing=5 cellpadding=0 align="center" style="margin-bottom:0;">
 	<tr>
-		<td colspan=3 >
-			<div id="header">
-				<div id="logo">
-					<a href="/" title="Round Table Denmark"><img border=0 src="/template/images/logo.png" alt="Round Table Denmark" /></a>
-				</div>
-				<div id="search">
-					<form action="/">
-						<input class="bar" name="search" type="search" title="Indtast søgesætning. Skriv f.eks. 'danske bank' for at finde alle forekomster af sætningen 'danske bank' eller skriv 'danske +bank' for at søge efter alle forekomster af ordene 'danske' og 'bank'" value="">
-						<input class="soeg" type="submit" value="SØG"><br>
-						<a href=?biz>Branchekartotek</a>
-					</form>
-				</div>
-			</div>
-<div id="menu">
-	<ul id="menu_container">
-		%%ADMINBOX%%
-		%%ARTICLEBOX%%
-	</ul>
-</div>			
-		</td>
-	</tr>
-	<tr>
-		<td valign="top"  width=195px id=content>
-			<!-- left column -->
+        <!-- left column - Sidebar Login Code comment - 8-9-2015 -->
+		<!--<td valign="top"  width=195px id=content>
+
 			<div class="box" id="leftbox">
 				%%LOGINBOX%%
 			</div>
 			<div class="box" id="soeg">
 				%%STATSBOX%%
 			</div>
-			%%BANNER_1%%
+
 		</td>
-		<td valign="top" width=570px id=content>
+		<td valign="top" id=content>
 		<!-- content -->
-    
-		<div class=box>
-		<div style="padding:5px" id=contentbox>%%CONTENT%%</div></div>
-		
-		</td>
-		<td valign=top width=195px id=content>
-			<!-- right column -->
-			<script src="/scripts/rtd/randomtabler.js.php"></script>
-			%%BANNER_2%%
-			%%BANNER_3%%		
-		</td>
-	</tr>
-</table>
+
+		<!--<div class=box>
+		<div style="padding:5px" id=contentbox></div></div>-->               
+               
+                
+        %%REVOLUTION_SLIDER%% 
+        
+        <div id="page-content" role="main">
+        <div class="col-xs-12 col-sm-4 col-md-2" id="banners">
+        %%BANNER_2%%
+        %%BANNER_3%%
+        </div>
+            <div class="container">
+            
+		<!--<div class="container">
+
+			<!-- CONTENT -->
+			<!--<div id="content"> -->
+				<!--	<div class="title title-section"> -->
+                        <div id="content"> <div class="title title-section"> %%HOMECONTENT%% </div></div>
+                        <div class="col-xs-12 col-sm-8 col-md-10">
+						%%CONTENT%%
+                        
+                        <div class="container-out news-page" style="display:none; clear:both;">
+
+<div class="title title-section">
+    <h2>Seneste nyt</h2>
+    <p>De vigtigste nyheder nu og her</p>
+    <span class="sticker">
+        <i class="icon fa fa-bullhorn"></i>
+    </span>
+</div><!-- .title.title-section -->
+
+<div data-animate="flipInY">
+    <div class="carousel-wrap">
+        <ul class="carousel-nav">
+            <li><a href="#" class="btn btn-icon-prev prev"></a></li>
+            <li><a href="#" class="btn btn-icon-next next"></a></li>
+        </ul><!-- .carousel-nav -->
+
+    <div class="carousel" data-visible="3">
+	&nbsp;</div>
+
+    </div>
+</div>
 
 </div>
+
+                        </div>
+				<!--	</div><!-- .title.title-section -->
+
+			<!--</div> --><!-- #content -->
+
+		<!--</div><!-- .container -->
+
+
+<div id="latestmemberss" class="container container-image" style="background-image:url(img/Light-Rays-Dark-Blue-Background.jpg);display:none">
+&nbsp;
+</div>
+
+    </div><!-- .container -->
+
+<div class="container" id="birthdaymemberss" style="display:none">
+&nbsp;
+
+ <!--<div id="newss">
+	&nbsp;</div>
+<div id="latestmemberss">
+	&nbsp;</div>
+<div id="birthdaymemberss">
+	&nbsp;</div>-->
+<script src="/scripts/rtd/birthday.js.php"></script><script src="/scripts/rtd/news.js.php"></script><script src="/scripts/rtd/latestmembers.js.php"></script>
+</div>
+
+</div>
+
+<div class="container container-light statistik" style="clear:both;">
+	<div class="title title-section">
+				<h2>Statistik</h2>
+				<span class="sticker">
+					<i class="icon icomoon-stats"></i>
+				</span>
+			</div>
+	<div class="row">
+
+		<div class="statistik_content col-xs-12">
+
+			<div class="row">
+				<div class="col-sm-6 ">
+
+									<div class="iconbox iconbox-style1">
+										<div class="iconbox-heading">
+
+											<div class="icon">
+												<i class="icomoon-users"></i>
+											</div>
+<div class="title">
+												<h4><span class="counter">%%MEDLEMMER_COUNT%%</span>  Medlemmer</h4>
+
+											</div>
+
+										</div><!-- .iconbox-heading -->
+
+									</div><!-- .iconbox -->
+<div class="iconbox iconbox-style1">
+										<div class="iconbox-heading">
+
+											<div class="icon">
+												<i class="icomoon-star3"></i>
+											</div>
+<div class="title">
+												<h4><span class="counter">%%HONORARY_COUNT%%</span> &aelig;resmedlemmer</h4>
+											</div>
+
+										</div><!-- .iconbox-heading -->
+
+									</div><!-- .iconbox -->
+								</div><!-- .col-sm-6 -->
+								<div class="col-sm-4 col-sm-offset-2">
+									&nbsp;<br/>
+<div class="iconbox iconbox-style1 iconbox-list">
+										<div class="iconbox-heading">
+
+											<div class="icon">
+												<i class="icomoon-plus"></i>
+											</div>
+
+
+										</div><!-- .iconbox-heading -->
+										<div class="iconbox-content">
+											<div class="title">
+												<h5 class="counter">%%NEWMEMBERS_COUNT%%</h5>
+											</div>
+											<div class="text">
+												<p>Nye i &acirc;r</p>
+											</div>
+
+										</div><!-- .iconbox-content -->
+									</div><!-- .iconbox -->
+
+									<div class="iconbox iconbox-style1 iconbox-list">
+										<div class="iconbox-heading">
+
+											<div class="icon">
+												<i class="icomoon-minus"></i>
+											</div>
+
+
+										</div><!-- .iconbox-heading -->
+										<div class="iconbox-content">
+											<div class="title">
+												<h5 class="counter">%%LEAVINGMEMBERS_COUNT%%</h5>
+											</div>
+											<div class="text">
+												<p>Afg&acirc;ende i &acirc;r</p>
+											</div>
+
+										</div><!-- .iconbox-content -->
+									</div><!-- .iconbox -->
+
+
+
+									<div class="iconbox iconbox-style1 iconbox-list">
+										<div class="iconbox-heading">
+
+											<div class="icon">
+												<i class="icomoon-stats"></i>
+											</div>
+
+
+										</div><!-- .iconbox-heading -->
+										<div class="iconbox-content">
+											<div class="title">
+												<h5 class="counter">%%AVGAGE_COUNT%%</h5>
+											</div>
+											<div class="text">
+												<p>Gennemsnits alder</p>
+											</div>
+
+										</div><!-- .iconbox-content -->
+									</div><!-- .iconbox -->
+
+								</div><!-- .col-sm-6 -->
+						</div> <!--row-->
+					</div> <!--statistics-->
+		<script src="/scripts/rtd/randomtabler.js.php"></script>
+				</div>
+		</div>
+       <!--
+
+		</td>
+		<td valign=top width=195px id=content>
+			<!-- right column
+			<script src="/scripts/rtd/randomtabler.js.php"></script>
+
+	<!-- 	</td>
+	</tr>
+</table>-->
+
+</div>
+
+    <!-- Login/Register Modal -->
+	<div id="login-register" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+		<div class="modal-dialog container">
+			<div class="row">
+
+				<div class="modal-bg" data-dismiss="modal"></div>
+
+                    <div class="col-sm-6">
+
+					<div class="modal-body">
+						<div class="modal-content">
+							<a href="#" type="button" class="close btn btn-dark btn-icon-close" data-dismiss="modal" aria-hidden="true"></a>
+							<div class="tab" data-animation="slide">
+								<ul class="tab-heading">
+									<li class="current"><h6><a class="btn btn-primary btn-lg" href="#">Log ind</a></h6></li>
+									<li><h6><a href="#">Mumie log ind</a></h6></li>
+								</ul><!-- .tab-heading -->
+								<div class="tab-content">
+									<div class="current">
+
+
+
+
+			<!--<a href=# onclick="mummy_login();">Mumielogin</a><br/>-->
+
+										<form action="/" method="POST" class="form-validate" id="login">
+                                        <input type="hidden" name="login" value="now" />
+
+											<div class="form-field">
+												<div class="row">
+													<label for="login_username" class="col-sm-3">Brugernavn<span class="require">*</span></label>
+													<div class="col-sm-9">
+														<input class="form-control" type="text" name="username" id="login_username" required />
+													</div>
+												</div>
+											</div><!-- .form-field -->
+											<div class="form-field">
+												<div class="row">
+													<label for="login_password" class="col-sm-3">Password<span class="require">*</span></label>
+													<div class="col-sm-9">
+														<input class="form-control" type="password" name="password" id="login_password" required />
+													</div>
+												</div>
+											</div><!-- .form-field -->
+											<div class="form-field">
+												<div class="row">
+													<div class="col-sm-offset-3 col-sm-9">
+														<input type="checkbox" name="login-remember" id="login-remember">
+														<label for="login-remember">Husk mig</label>
+													</div>
+												</div>
+											</div><!-- .form-field -->
+											<div class="form-field text-right">
+												<div class="form-group">
+													Glemt dit password? <a href="#" title="Password Lost and Found" class="recovery-open">Få et nyt her</a>
+												</div>
+												<div class="form-group">
+													<input type="submit" value="Log in" class="btn">
+												</div>
+											</div><!-- .form-field -->
+										</form>
+										<form action="#" method="POST" class="form-validate clear" id="recovery">
+											<hr>
+											<div class="title">
+												<a href="#" class="recovery-close"><i class="fa fa-times"></i></a>
+												<h4>Reset your password</h4>
+											</div>
+											<div class="text">
+												<p>Enter your email address below and we'll send a special reset password link to your inbox.</p>
+											</div>
+											<div class="form-field">
+												<div class="row">
+													<label for="recovery-email" class="col-sm-3">Email<span class="require">*</span></label>
+													<div class="col-sm-9">
+														<input class="form-control" type="email" name="recovery-email" id="recovery-email" required />
+													</div>
+												</div>
+											</div><!-- .form-field-->
+											<div class="form-field text-right">
+												<input type="submit" value="Send Recovery Email" class="btn" onclick="send_password();">
+											</div><!-- .form-field -->
+										</form>
+									</div>
+									<div>
+
+										<form action="?mummy" method="POST" class="form-validate" id="register">
+											<div class="form-field">
+												<div class="row">
+													<label for="login_username" class="col-sm-3">Klub<span class="require">*</span></label>
+													<div class="col-sm-9">
+														<input class="form-control" type="text" name="club" id="club" placeholder="Klub (f.eks. RT132)" required />
+													</div>
+												</div>
+											</div><!-- .form-field -->
+											<div class="form-field">
+												<div class="row">
+													<label for="login_password" class="col-sm-3">Password<span class="require">*</span></label>
+													<div class="col-sm-9">
+														<input class="form-control" type="password" name="password" id="password" required />
+													</div>
+												</div>
+											</div><!-- .form-field -->
+											<div class="form-field text-right">
+												<div class="form-group">
+													<input type="submit" value="Log in" class="btn">
+												</div>
+											</div><!-- .form-field -->
+										</form>
+									</div>
+								</div><!-- .tab-content -->
+							</div><!-- .tab -->
+						</div><!-- .modal-content -->
+					</div><!-- .modal-body -->
+
+				</div><!-- .col-sm-6 -->
+
+                </div><!-- .row -->
+		</div><!-- .modal-dialog -->
+	</div><!-- #login-register-modal -->
+
 <div style="display:none" id=send_message_dialog>
 	<form action=/ method=post>
 	<input type=hidden name=msg[uid] id=send_message_uid value=0>
@@ -94,23 +477,134 @@
 	<b>Emne</b><br>
 	<input type=text name=msg[subject]><br>
 	<b>Besked</b><br>
-	<textarea style="width:100%;height:200px" name=msg[message]></textarea><br>
+	<textarea style="width:100%;height:200px" name=msg[message] class="form-control"></textarea><br>
 	<input type=submit value=Send>
-	</form>	
+	</form>
 </div>
 <script>
+
+
 	function send_message(uid,name)
 	{
 		$("#send_message_name").append(name);
 		$("#send_message_uid").val(uid);
 		$("#send_message_dialog").dialog({modal:true});
 	}
+
+	function send_password()
+	{
+		//var m = prompt("Indtast dit brugrenavn. Herefter sender systemet kodeordet til dig på mail:");
+		var m = $("#recovery-email").val();
+		if (m && m!="") document.location.href="?sendpassword="+m;
+	}
 </script>
-<div style="background-color:black">
+<div id="footer">
+	<div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="widget">
+                                    <div class="widget-heading">
+
+                                        <div class="title title-main">
+                                            <h5>RT Links</h5>
+                                        </div>
+
+                                    </div><!-- .widget-heading -->
+                                    <div class="widget-content">
+                                        <article class="post post-mini post-type-text">
+                                                <div>
+                                                    <div class="title">
+                                                        <h2 class="h5"><a href=http://m.rtd.dk target=_blank>RTD Mobil</a></h2>
+                                                        <h2 class="h5"><a href=http://shop.rtd.dk target=_blank>RTD Shop</a></h2>
+                                                        <h2 class="h5"><a href=?ts>Tabler Service</a></h2>
+                                                        <h2 class="h5"><a href=http://www.rtinternational.org target=_blank>Round Table International</a></h2>
+                                                    </div><!-- .title -->
+                                                </div><!-- .post-content -->
+                                            </article>
+                                        <!-- .posts -->
+
+                                    </div><!-- .widget-content -->
+
+                                </div><!-- .widget -->
+            </div>
+            <div class="col-sm-3">
+                <div class="widget">
+                                    <div class="widget-heading">
+
+                                        <div class="title title-main">
+                                            <h5>Seneste referater</h5>
+                                        </div>
+
+                                    </div><!-- .widget-heading -->
+                                    <div class="widget-content">
+                                        <article class="post post-mini post-type-text">
+                                                <div>
+                                                    <div class="title">
+                                                        <h2 class="h5">%%LATEST_MINUTES%%</h2>
+
+                                                    </div><!-- .title -->
+                                                </div><!-- .post-content -->
+                                            </article>
+                                        <!-- .posts -->
+
+                                    </div><!-- .widget-content -->
+
+                                </div><!-- .widget -->
+            </div>
+            <div class="col-sm-3">
+                <div class="widget">
+                                    <div class="widget-heading">
+
+                                        <div class="title title-main">
+                                            <h5>N&aelig;ste møder</h5>
+                                        </div>
+
+                                    </div><!-- .widget-heading -->
+                                    <div class="widget-content">
+                                        <article class="post post-mini post-type-text">
+                                                <div>
+                                                    <div class="title">
+                                                        <h2 class="h5">%%LATEST_MEETINGS%%</h2>
+                                                    </div><!-- .title -->
+                                                </div><!-- .post-content -->
+                                            </article>
+                                        <!-- .posts -->
+
+                                    </div><!-- .widget-content -->
+
+                                </div><!-- .widget -->
+            </div>
+            <div class="col-sm-3">
+                <div class="widget">
+                                    <div class="widget-heading">
+
+                                        <div class="title title-main">
+                                            <h5>Kontakt og info</h5>
+                                        </div>
+
+                                    </div><!-- .widget-heading -->
+                                    <div class="widget-content">
+                                        <article class="post post-mini post-type-text">
+                                                <div>
+                                                    <div class="title">
+                                                         <h2 class="h5"><a href=?aid=3>Kontakt via mail</a></h2>
+                                            <h2 class="h5"><a href=http://www.linkedin.com/groups?gid=48578 target=_blank>Kontakt via LinkedIn</a></h2>
+                                            <h2 class="h5"><a href=https://www.facebook.com/roundtabledk target=_blank>Kontakt via Facebook</a></h2>
+                                                    </div><!-- .title -->
+                                                </div><!-- .post-content -->
+                                            </article>
+                                        <!-- .posts -->
+
+                                    </div><!-- .widget-content -->
+
+                                </div><!-- .widget -->
+            </div>
+
+<!--
 <table align=center style="color:gray;height:100%" cellspacing=10 cellpadding=5>
 	<tr>
 		<td valign=top>
-		<b>RT Links</b><br>
+		<h5>RT Links</h5><br>
 		<li><a href=http://m.rtd.dk target=_blank>RTD Mobil</a>
 		<li><a href=http://shop.rtd.dk target=_blank>RTD Shop</a>
 		<li><a href=?ts>Tabler Service</a>
@@ -131,11 +625,16 @@
 		<li><a href=https://www.facebook.com/roundtabledk target=_blank>Kontakt via Facebook</a>
 		</td>
 	</tr>
-</table>
-</div>
-<a title="Web Analytics" href="http://clicky.com/100596967"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" width=0 border="0" /></a>
+</table> -->
+		</div><!-- .row -->
+	</div><!-- .container -->
+
+    <a title="Web Analytics" href="http://clicky.com/100596967" class="credits"><img alt="Web Analytics" src="//static.getclicky.com/media/links/badge.gif" width=0 border="0" /></a>
+</div><!-- .footer -->
+
+<a class="btn btn-icon-top" id="toTop" href="#"></a>
 <script src="//static.getclicky.com/js" type="text/javascript"></script>
-<script type="text/javascript">try{ clicky.init(100596967); }catch(e){}</script>
+
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100596967ns.gif" /></p></noscript>
 <script type="text/javascript">
 var _urq = _urq || [];
@@ -145,6 +644,74 @@ var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async
 ur.src = 'http://sdscdn.userreport.com/userreport.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
 })();
+</script>
+
+<!-- Retina js -->
+<script type="text/javascript" src="/template/js/retina.min.js"></script>
+<!-- FancyBox -->
+<script type="text/javascript" src="/template/js/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<!-- Bootstrap js -->
+<script type="text/javascript" src="/template/js/bootstrap.min.js"></script>
+
+<!-- FlickrFeed  -->
+<script type="text/javascript" src="/template/js/jflickrfeed.min.js"></script>
+
+<!-- carouFredSel -->
+<script type="text/javascript" src="/template/js/jquery.carouFredSel-6.2.1-packed.js"></script>
+
+<!-- Validate -->
+<script type="text/javascript" src="/template/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/template/js/isotope.pkgd.min.js"></script>
+
+<!-- Mediaelementjs -->
+<script type="text/javascript" src="/template/js/mediaelement-and-player.min.js"></script>
+
+<!-- Main theme javaScript file -->
+<script type="text/javascript" src="/template/js/theme.min.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+<script src="/template/js/jquery.counterup.min.js"></script>
+
+<script>
+
+    $(window).load(function() {
+        $('.counter').counterUp({
+            delay: 10,
+            time: 1000
+        });
+
+        $('ul.sub-menu').addClass('dropdown');
+        $('#main-menu ul.sub-menu').show();
+
+    });
+
+	$(document).ready(function(){
+		if( $("#news").length > 0 )
+		{}
+		else
+		{
+			 $("#newss,#latestmemberss,#birthdaymemberss").each(function(){
+				$(this).remove();
+			});
+		}
+	});
+
+	$('#main-menu').mouseover(function(){
+		$('#custom-nav-bg').css('height','430px')
+	});
+	$('#main-menu').mouseleave(function(){
+		$('#custom-nav-bg').css('height','0px')
+	});    
+</script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type='text/javascript'>
+(function (d, t) {
+  var bh = d.createElement(t), s = d.getElementsByTagName(t)[0];
+  bh.type = 'text/javascript';
+  bh.src = '//www.bugherd.com/sidebarv2.js?apikey=omoiy70jamjwji1pdhskja';
+  s.parentNode.insertBefore(bh, s);
+  })(document, 'script');
 </script>
 </body>
 </html>

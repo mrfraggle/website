@@ -497,7 +497,7 @@
 			die();
 		}
     return get_one_data_row("
-      select U.uid, U.username, U.profile_firstname, U.profile_lastname, U.private_email, U.private_mobile from user U
+      select U.uid, U.username, U.profile_firstname, U.profile_lastname, U.private_email, U.private_mobile, U.company_facebook, U.company_linkdin, U.company_twitter from user U
       inner join role R on R.uid=U.uid
       inner join club C on U.cid=C.cid
       where R.rid=14 and C.district_did=$did and R.start_date<now() and R.end_date>now()
@@ -1462,7 +1462,7 @@
 	{
 		$sql = "
 						select 
-						U.profile_ended, U.profile_started, U.uid,U.username,U.profile_firstname, U.profile_lastname, U.company_name, U.company_position, U.private_mobile, U.private_email,
+						*,
 						(select max(weight) from role RR inner join role_definition RRD on RR.rid=RRD.rid where RR.uid=U.uid) as Weight 
 						from user U
 						where 
@@ -1482,7 +1482,7 @@
 	{
 		$sql = "
 						select 
-						U.profile_ended, U.profile_started, U.uid,U.username,U.profile_firstname, U.profile_lastname, U.company_name, U.company_position, U.private_mobile, U.private_email,
+						*,
 						(select max(weight) from role RR inner join role_definition RRD on RR.rid=RRD.rid where RR.uid=U.uid and RR.start_date<now() and RR.end_date>now()) as Weight  
 						from user U
 						inner join role R on R.uid=U.uid
@@ -1850,6 +1850,33 @@ order by R.end_date
 		$email = addslashes($email);
 		$db = get_db();
 		$rs = $db->execute("select * from user where company_email='$email'");
+		if ($db->numrows($rs)==0) return false;
+		else return $db->fetchassoc($rs);
+	}
+    
+    function fetch_user_by_company_facebook($fb)
+	{
+		$fb = addslashes($fb);
+		$db = get_db();
+		$rs = $db->execute("select * from user where company_facebook='$fb'");
+		if ($db->numrows($rs)==0) return false;
+		else return $db->fetchassoc($rs);
+	}
+    
+    function fetch_user_by_company_linkdin($link)
+	{
+		$link = addslashes($link);
+		$db = get_db();
+		$rs = $db->execute("select * from user where company_linkdin='$link'");
+		if ($db->numrows($rs)==0) return false;
+		else return $db->fetchassoc($rs);
+	}
+    
+    function fetch_user_by_company_google($google)
+	{
+		$google = addslashes($google);
+		$db = get_db();
+		$rs = $db->execute("select * from user where company_google='$google'");
 		if ($db->numrows($rs)==0) return false;
 		else return $db->fetchassoc($rs);
 	}

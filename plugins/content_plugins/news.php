@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 		content plugin stats (c) 3kings.dk
 		

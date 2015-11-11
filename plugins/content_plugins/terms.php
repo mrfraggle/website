@@ -43,7 +43,7 @@
 		
 		$html .= "
 							</table>
-							<input type=submit>
+							<input type=submit class=btn>
 							</form>
 							";
 		

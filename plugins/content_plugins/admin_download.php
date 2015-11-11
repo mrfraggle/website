@@ -263,7 +263,7 @@ order by RD.shortname asc
 			"popularpages" => get_html_table("select previous as URL,counter as CLICK from tracker order by counter desc limit 20"),
 			"popularsearch" => get_html_table("select q as QUERY,count as CLICK from search order by count desc limit 25"),
 			"log" => get_html_table("select * from cronjob order by ts desc limit 5"),
-			"syslog" => "<form action='/?admin_download=sysstat'><input type=text name=section placeholder=Section><input type=submit></form>".get_html_table("select * from log {$syslogwhere} order by ts desc limit 10"),
+			"syslog" => "<form action='/?admin_download=sysstat'><input type=text name=section placeholder=Section><input type=submit class=btn></form>".get_html_table("select * from log {$syslogwhere} order by ts desc limit 10"),
 			"bannerclick" => get_html_table("SELECT B.TITLE,B.LINK,B.STARTDATE,B.ENDDATE,(SELECT COUNT(*) FROM banner_click BC WHERE BC.bid = B.bid) AS CLICK FROM banner B ORDER BY CLICK DESC")			
 		);
 		return term_unwrap("admin_sysstat", $data);
@@ -295,7 +295,7 @@ order by RD.shortname asc
 		foreach ($a as $e)
 		{
 			$table .= "<tr>";
-			foreach($e as $k=>$v) $table .= "<td>{$v}</td>";
+			foreach($e as $k=>$v) $table .= "<td>{".utf8_decode($v)."}</td>";
 			$table .= "</tr>";
 		}
 		
@@ -319,7 +319,7 @@ order by RD.shortname asc
 		{
 			$html .= "<option value={$c['cid']}>{$c['club']} (SMS: {$c['balance']})</option>";
 		}
-		$html .= "<input type=number name=newbalance><input type=submit></form><hr>";
+		$html .= "<input type=number name=newbalance class=form-control><input type=submit class=btn></form><hr>";
 		
 		$html .= a2h($balance);
 		
@@ -436,7 +436,7 @@ order by RD.shortname asc
 				inner join district D on C.district_did=D.did
 				inner join role R on R.uid=U.uid
 				inner join role_definition RD on RD.rid=R.rid
-				where R.end_date>now()
+                where R.end_date>now()
 				order by U.profile_firstname";
 				$xml = (get_xml($sql));
 				header('Content-Description: File Transfer');

@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 	mysql connect wrapper (c) 3kings.dk
 	

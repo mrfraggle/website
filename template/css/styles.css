@@ -1,0 +1,171 @@
+/* 	::
+
+	:: File 		: styles.css
+	:: About 		: Your stylesheet file
+
+:: */
+a {color:#777;}
+.center{text-align:center;}
+.margin-btm{margin-bottom:5px;width:100%;}
+a.btn.btn-block{width:100%;}
+.logo{height:60px !important; margin-top:-15px !important}
+.simplemember .userpic{max-width: 100%}
+.meetstatistic th:nth-child(1){width:100px;}
+.meetstatistic th:nth-child(2){width:130px;}
+.meetstatistic th,
+.meetstatistic td{border:none;}
+.meetstatistic .skill{margin-bottom: 0}
+
+.club{border:1px solid #ddd; padding:5px;}
+.club .content{padding:0px 5px;}
+.club h5{margin: 10px 0px 0px 0px;}
+.club .meta{margin:5px;}
+.club .thumbnail{height:200px; text-align: center}
+.club .thumbnail img{max-height:100%; width:auto;}
+.linkedin:before{content: "\E79F";}
+.mail:before{content: "\E760";}
+.tab-content.trans{background-color:transparent; border:none;}
+
+.not-loggin .title.title-section {width:100%;}
+.container.CountryPg .title.title-section {margin:0;}
+
+.not-loggin #page-content.not_home #content {display:block;}
+.not-loggin #page-content.not_home #content + .col-xs-12.col-md-10 {display:none;}
+#page-content.not_home .container {width:1100px;}
+
+.news-page .carousel-outer .post img {max-height:150px;}
+
+#page-content .container .col-md-10 {float:right;}
+
+.col-sm-4.col-md-2 .member-heading .userpic {max-width:100%;}
+
+.tp-leftarrow:before, .tp-rightarrow:before {content:'' !important;}
+#main-menu ul.sub-menu {display:none;}
+#main-menu ul.sub-menu.dropdown {display:block;}
+#clubmembers .member-heading .social a.facebook:hover {background:#2d343e;}
+table td, table th {text-align: left;}
+
+.page_content .container.clubpg_last_sec .col-xs-12 #stat.table-striped {width: 80%;}
+.page_content #content .title-section ul li {text-align: left;}
+#header ul.user-nav li a.btn-lg {margin:0 0 0 10px;}
+
+.page_content .col-sm-8.col-md-10 ul li {list-style:none;}
+
+.page-slider-wrap {display:none;}
+.homepage .page-slider-wrap, .country_pages .page-slider-wrap, .not-loggin .page-slider-wrap {display:block;}
+.not-loggin .tp-leftarrow, .not-loggin .tp-rightarrow {top:50% !important;}
+
+.page_content .col-md-10 .btn-info.margin-btm, .page_content .col-md-10 a.btn-info.margin-btm {width:auto; max-width:100%; margin-top:15px;}
+
+.homepage .page_content .col-md-10 .col-md-2.home-right + .col-md-10 {width:100%;}
+.homepage .page_content .col-md-10 .col-md-10 #content .title.title-section {margin-top:20px;}
+.homepage .page_content .col-md-10 .col-md-10 #notify_build {
+    max-height:400px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.page_content .col-md-10 form {width: 95%;}
+.page_content .col-md-10 form .btn {margin: 10px 0 0;}
+
+.page_content .col-md-10 form input[type="text"], .page_content .col-md-10 form input[type="email"], .page_content .col-md-10 form input[type="tel"], .page_content .col-md-10 form textarea, .page_content .col-md-10 form input[type="password"]
+{
+    color: #888;
+    width: 100%;
+    line-height: 20px;
+    border-radius: 2px;
+    border: 1px solid #f1f1f1;
+    background-color: #f9f9f9;
+    padding: 14px 10px;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: inline-block;
+    -webkit-transition: all linear .1s;
+    transition: all linear .1s;
+    resize: none
+}
+.form-control:focus, .page_content .col-md-10 form input[type="text"]:focus, .page_content .col-md-10 form input[type="email"]:focus, .page_content .col-md-10 form input[type="tel"]:focus, .page_content .col-md-10 form textarea:focus, .page_content .col-md-10 form input[type="password"]:focus {
+    border-color: #007aff;
+    -webkit-box-shadow: 0 0 0 2px #007aff;
+    box-shadow: 0 0 0 2px #007aff;
+}
+
+.page_content .col-md-10 input[type="submit"] {
+    text-shadow: none;
+    color: #fff;
+    display: inline-block;
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px 20px;
+    font-size: 13px;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 2px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+    -webkit-transition: color linear .1s, background-color linear .1s;
+    transition: color linear .1s, background-color linear .1s
+}
+.page_content .col-md-10 input[type="submit"]:hover {
+    color: #fff
+}
+.page_content .col-md-10 input[type="submit"]:active {
+    color: #fff;
+    top: 1px;
+    right: -1px;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.member .member-heading ul.social li a:hover {background:#2d343e; color:#fff;}
+
+#boxed .firsadvert#banners, #boxed .firsadvert#banners + .col-md-10 {margin-top:70px;}
+.country_pages #boxed .firsadvert#banners, .country_pages #boxed .firsadvert#banners + .col-md-10 {margin-top:0;}
+.page_content .col-md-10 #clubmembers .col-sm-4 {min-height:415px;}
+.country_pages .col-md-10 .grid-wrap #projects .club {min-height:300px;}
+.country_pages .col-md-10 .grid-wrap #projects .club .thumbnail {height:auto;}
+.page_content .col-md-10 p img {vertical-align:top;}
+#calendar .fc-border-separate th, #calendar .fc-border-separate td {border:1px solid #ccc;}
+
+body {background-color:darkgray !important; background-image:none !important;}
+
+.page_content .club-page.club-page-header .container-out li {list-style: none;}
+.page_content .club-page.club-page-header .container-out .club_links {width: 26%;}
+.page_content .container-out.Klubber .club span.icomoon-users {display:block; margin-top:10px;}
+
+.homepage .container {padding-left:0 !important;}
+.homepage #footer .container {padding-left:15px !important;}
+.homepage #header .container, .homepage .container-light.statistik {padding-left:15px !important;}
+.homepage #latestmemberss #members.row, .homepage #birthdaymemberss .row {margin-left:0; margin-right:0;}
+
+@media (min-width: 768px){
+.dl-horizontal dt {
+    float: left;
+    width: 160px;
+    overflow: hidden;
+    clear: left;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold
+}
+.dl-horizontal dd {
+    margin-left: 180px;
+}
+}
+
+@media (max-width: 768px)
+{
+    .col-sm-4.col-md-2 .random_mem .member-heading .userpic {max-width:60%;}
+    #mobile-menu li a {line-height:22px;}
+}
+
+@media (max-width: 640px)
+{
+    .col-sm-4.col-md-2 .random_mem .member-heading .userpic {max-width:60%;}
+    .col-xs-6.col-md-2 .member-heading .userpic {max-width:100%;}
+    .col-md-2.firsadvert .mybanners {text-align:center;}
+    #page-content .container {padding-right:0;}
+}

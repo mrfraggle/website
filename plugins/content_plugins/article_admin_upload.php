@@ -29,7 +29,7 @@
 <? if ($aid!=-1) { ?>
 <form action=article_admin_upload.php method=post enctype="multipart/form-data">
 <input type=hidden name=aid value=<?=$aid?>>
-<input type=file name=file><input type=submit value=Upload>
+<input type=file name=file><input type=submit value=Upload class="btn">
 </form>
 <? } ?>
 <?
@@ -38,7 +38,7 @@
 	{
 		echo "
 		<li>
-		<a target=_blank href=/uploads/article_file/?afid={$files[$i]['afid']}>
+		<a target=_blank href=http://rtd.dk/uploads/article_file/?afid={$files[$i]['afid']}>
 		{$files[$i]['filename']}
 		</a> 
 		- <a href=article_admin_upload.php?aid={$aid}&delete={$files[$i]['afid']}>Slet</a>

@@ -19,7 +19,7 @@
 						<form action=. method=post>
 						Username / UID:<br>
 						<input type=text name=takeover value="'.$_REQUEST['takeover'].'"><br>
-						<input type=submit>
+						<input type=submit class=btn>
 						</form>
 						';
 		

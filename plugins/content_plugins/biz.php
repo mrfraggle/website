@@ -1,4 +1,4 @@
-<?
+<?php
 	/*
 		content plugin admin terms - used to login as other users (c) 3kings.dk
 		

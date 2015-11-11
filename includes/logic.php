@@ -297,6 +297,24 @@
 		}		
 		return false;
 	}
+    
+    function logic_upload_club_chairman($data, $cid)
+	{   
+		$fn = $data['name'];
+		$ext = "";
+		if (stripos($fn,".jpg") || stripos($fn, ".jpeg")) {$ext=".jpg";}
+		else if (stripos($fn, ".png")) {$ext=".png";}
+		else if (stripos($fn, ".gif")) {$ext=".gif";}
+		
+		if ($ext!="")
+		{
+			$newf = rand().$cid.$ext;
+			$newfn = '/var/www/vhosts/rtd.dk/dev/uploads/chariman_image/'.$newf;
+			move_uploaded_file($data['tmp_name'], $newfn);
+			return $newf;
+		}		
+		return false;
+	}
 	
 	function logic_get_club_birthdays($cid,$today=false)
 	{
@@ -880,7 +898,7 @@
 	
 	function log_to_console($what)
 	{
-		// echo "<script>console.log('{$what}');</script>\n";
+		/* echo "<script>console.log('{$what}');</script>\n";*/
 	}
 
 	/**

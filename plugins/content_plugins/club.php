@@ -28,7 +28,10 @@
 		}
 		$club['boardmails'] = implode(";",$mails);
 		
-		$html = term_unwrap('club_header', $club);
+		$html = "<div class='col-xs-12 col-sm-8 col-md-10 club-page club-page-header right-part'>";
+		$html .= "<div class=\"container-out clearfix\">";
+		$html .= term_unwrap('club_header', $club);
+		
 		return $html;
 	}
 	
@@ -130,8 +133,9 @@ $ics .=
 		}
 
     set_title($club['name']);
-    $html = term_unwrap('special_club_page', $club);
-
+    //$html = term_unwrap('special_club_page', $club);
+	$html = "<div class='col-xs-12 col-sm-8 col-md-10 club-page right-part'>";
+	
 		if (logic_is_admin())
 		{
 			$html .= term_unwrap('special_club_page_admin',$club);
@@ -144,19 +148,22 @@ $ics .=
 
 		$meetings = logic_fetch_future_meetings_for_club($club['cid'],"asc",100);
 		$minutes = logic_fetch_minutes($club['cid'],"desc", 50);
+		
 		if (sizeof($meetings)) $html .= term_unwrap('club_future_meetings', $meetings, true);
 		if (sizeof($minutes)) $html .= term_unwrap('club_minutes', $minutes, true);
 
 		$missing_minutes = logic_meeting_with_no_minutes($club['cid']);
-    if (sizeof($missing_minutes)>0)
-    {
-      $html .= term('club_missing_minutes');
-  		for($i=0;$i<sizeof($missing_minutes);$i++)
-  		{
-  			$html .= term_unwrap('club_future_meetings_item', $missing_minutes[$i]);
-  		}
-    }
-
+		if (sizeof($missing_minutes)>0)
+		{
+		  $html .= term('club_missing_minutes');
+          $html .= '<ul class="center">';
+			for($i=0;$i<sizeof($missing_minutes);$i++)
+			{
+				$html .= term_unwrap('club_future_meetings_item', $missing_minutes[$i]);
+			}
+            $html .= '</ul>';
+		}
+		$html .= "</div>";
     return $html;
   }
   
@@ -168,6 +175,10 @@ $ics .=
 			if (isset($_FILES['logo']))
 			{
 				$logo = logic_upload_club_logo($_FILES['logo'],$club['cid']);
+			}
+            if (isset($_FILES['chiarmain_image']))
+			{              
+				$logo1 = logic_upload_club_chairman($_FILES['chiarmain_image'],$club['cid']);
 			}
 			logic_update_club($club['cid'], $data);
 			$club = logic_get_club($club['cid']);
@@ -310,13 +321,22 @@ $ics .=
 		
 		$html .= term('club_missing_minutes');
 		$missing_minutes = logic_meeting_with_no_minutes($club['cid']);
+        $html .= '<ul class="center">';
 		for($i=0;$i<sizeof($missing_minutes);$i++)
 		{
 			$html .= term_unwrap('club_future_meetings_item', $missing_minutes[$i]);
 		}
-
-		$html .= term('club_board');		
-		$html .= term_unwrap('club_board_member', array('data'=>addslashes(json_encode($board))));
+        $html .= '</ul>';
+		
+		$html .= "<div class=\"container-out clearfix\">";
+			$html .= "<div class=\"title title-section\">";
+				$html .= term('club_board');
+			$html .= "</div><!-- .title.title-section -->";		
+			$html .= "<div class=row>";
+				$html .= term_unwrap('club_board_member', array('data'=>addslashes(json_encode($board))));
+			$html .= "</div><!-- row -->";	
+		$html .= "</div><!-- container-out clearfix -->";	
+		
 /*		foreach ($board as $k => $v)
 		{
 			$html .= term_unwrap('club_board_member', $v);
@@ -330,13 +350,21 @@ $ics .=
 		{
 			$club_members = logic_get_active_club_members($club['cid']);
 		}
-		
+		$html .= "<div class=\"container-out clearfix\">";
+			$html .= "<div class=\"title title-section\">";
+				$html .= "<h2>Medlemmer</h2><p><button class=btn onclick=\"document.location.href=document.location.href+'&allmembers';\" >vis aktive og gamle medlemmer</button></p>";
+			$html .= "</div><!-- .title.title-section -->";	
+			
+		$html .= "<div class=row>";
 		$html .= term_unwrap('club_members', array('members'=>addslashes(json_encode($club_members))));
-		
-
+		$html .= "</div><!-- row -->";
+		$html .= "</div><!-- container-out -->";
+		$html .= '</div></div><!-- CLUB PAGE ENDS HERE -->';
+		$html .= '<div class="container clubpg_last_sec" style="clear:both;">';
 		$html .= term_unwrap('club_member_stat', logic_get_club_stats($club['cid']), true);
 
 		set_title($club['name']);		
+		$html .= '</div>';
 		return $html;
 	}
 ?>

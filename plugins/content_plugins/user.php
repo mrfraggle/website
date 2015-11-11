@@ -111,25 +111,25 @@
 			}
 		}
 
-		$html .= term_unwrap('user_profile', $user);
-    $html .= term_unwrap('user_profile_club', $club);
-
+		$html .= term_unwrap('user_profile_1', $user);
+    	$html .= term_unwrap('user_profile_club', $club);
 		$html .= term('user_role_pre');
 		
 		for ($i=0;$i<sizeof($user_roles);$i++)
-		{
+		{ 
 			if (logic_is_admin())
-			{
-				$html .= term_unwrap('user_role_item_admin', $user_roles[$i]);
+			{			     
+				$html .= term_unwrap('user_role_item_admin', $user_roles[$i]);                
 			}
 			else
 			{
 				$html .= term_unwrap('user_role_item', $user_roles[$i]);
 			}
 		}
-		
-	
 		$html .= term('user_role_post');
+		$html .= term_unwrap('user_profile_2', $user);
+	
+		
 		if (logic_is_admin())
 		{
 			$user['roles_json'] = json_encode( fetch_system_roles() );
@@ -367,7 +367,8 @@
 			{		
 				$html = content_handle_show_user($user,$user_roles,$may_edit_profile);
 			}	
-		set_title($user['profile_firstname'].' '.$user['profile_lastname']);
+            
+		set_title(utf8_decode($user['profile_firstname']).' '.utf8_decode($user['profile_lastname']));
     }		
 		
 		return $html;

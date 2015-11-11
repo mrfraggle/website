@@ -1,0 +1,36 @@
+/*
+Theme Name: Enfold Child
+Description: A <a href='http://codex.wordpress.org/Child_Themes'>Child Theme</a> for the Enfold Wordpress Theme. If you plan to do a lot of file modifications we recommend to use this Theme instead of the original Theme. Updating wil be much easier then.
+Version: 1.0
+Author: Kriesi
+Author URI: http://www.kriesi.at
+Template: enfold
+*/
+
+
+
+/*Add your own styles here:*/
+
+
+
+#av_section_1 .container {
+	height: 600px;
+}
+
+#header_main>.container {padding: 0px!Important;}
+#header_main .container .inner-container {height: 88px!important;line-height: 88px!important;}
+#header_main .logo, #header_main .logo a>img {width: 100%!important;}
+
+.title_container {background-color: #e1e1e1;}
+
+#top #menu-item-search {padding-right: 18px;}
+.header_color .main_menu ul:first-child > li > a {color: #ffffff;}
+.header_color .main_menu ul:first-child > li > a:hover {color: #A3BB78!important;}
+#top #s {background-color: #fff!important;}
+
+.avia_ajax_form .button {min-width: 100%!important;}
+
+.avia-promocontent fieldset>h3 {display: none!important}
+
+.avia_message_box.avia-color-custom {margin-bottom: 0px!important;padding: 15px!important;}
+.av_promobox.avia-button-no {margin: 0px 0px 15px 0px!important;padding: 10px!important;}

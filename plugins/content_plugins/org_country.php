@@ -28,7 +28,7 @@
 			logic_save_comment($_REQUEST['nid'],$_REQUEST['comment'],$did);
 		}
 
-		
+		$html = "<div class=\"right-part\">";
 		$header = term('country_header');
 		IF ($did!="")
 		{
@@ -37,13 +37,14 @@
 				IF ($did == $country['districts'][$i]['did']) 
 				{
 					set_title($country['districts'][$i]['name']);
-					$html = "<h1>{$country['districts'][$i]['name']}: {$country['districts'][$i]['description']}</h1>";
+					//$html .= "<h1>{$country['districts'][$i]['name']}: {$country['districts'][$i]['description']}</h1>";
 					$cal = $country['districts'][$i]['name'];
 					BREAK;
 				}
 			}
-      
+     
       $news = logic_get_news($did);
+      
       $chair = array_merge(logic_get_news_comments($news['nid']),logic_get_district_chairmain($did),$news,array("did"=>$did,'comments'=>addslashes(json_encode(logic_get_news_comments($news['nid'])))));
       
       if (logic_is_admin() || $_SESSION['user']['uid']==$chair['uid'])
@@ -63,7 +64,7 @@
 			$img = fetch_images_for_meeting($country['minutes'][$i]['mid']);
 			IF (EMPTY($img))
 			{
-	//			$html .= term('country_future_meeting_item_no_pic');
+				$html .= term('country_future_meeting_item_no_pic');
 			}
 			ELSE
 			{
@@ -82,32 +83,48 @@
 			}
 			
 		}
+        
 		$html .= term_unwrap('country_future_minutes_item', $minutes, true);	  
 
 //			echo "<!--- ".print_r($chair,true)."--->";
-
-      $html .= term_unwrap('district_chairman', $chair);
+	  $html .= term_unwrap('district_chairman', $chair);
 	  $html .= term_unwrap('district_calendar_show', array('name'=>$cal));
-
-      $html .= term('district_clubs');      
-      $html .= "<table width=100%><tr>";
-      $j = 0;
+      $html .= "<div class=\"container-out clearfix Klubber\" style=\"clear:both;\">";
+	  $html .= "<div class=\"title title-section\">";
+	  $html .= term('district_clubs');  
+	  $html .= "<p>Klubber i distrikt 1</p><span class=sticker><i class=\"icon icomoon-shield\"></i></span>";
+      $html .= "</div>";
+	  $html .= "<div class=\"grid-wrap\">";
+	  $html .= "<section id=projects class=grid data-columns=4>";
+	  $j = 0;
   		$clubs = logic_get_clubs($did);
+        
   		FOR ($i=0;$i<sizeof($clubs);$i++)
       {
         $c = $clubs[$i];
+		
         $cm = logic_get_club_chairman($c['cid']);
+		
         $count = sizeof(logic_get_active_club_members($c['cid']));
-        $html .= "<td valign=top><img style=\"border: 1px solid black;\" src=/uploads/club_logos/{$c['logo']} width=100px></td>".
-                 "<td valign=top><a href=?cid={$c['cid']}>{$c['name']}</a><br>F: {$cm['profile_firstname']} {$cm['profile_lastname']}<br>Medlemmer: $count</td>";
+        $html .= "<article class=club data-animate=bounceIn>";
+		$html .= "<a href='?cid=".$c['cid']."'><div class=thumbnail>";
+		$html .= "<img src=\"/uploads/club_logos/{$c['logo']}\" width=388px height=509px>";
+		$html .= "</div>";
+		$html .= "<div class=content>";
+        $html .= "<h5><a href='?cid=".$c['cid']."'>".utf8_decode($c['name'])."</a></h5>";
+		$html .="<p class=meta><span class=\"icon icomoon-star3\"><a href='?uid=".$cm['uid']."'> F: ".utf8_decode($cm['profile_firstname'])." ".utf8_decode($cm['profile_lastname'])."</a></span><br/><span class=\"icon icomoon-users\">Medlemmer: $count</span></p>";
+		
+		$html .= "</a></article>";
         $j++;
         IF ($j==2)
         {
           $j=0;
-          $html .= "</tr><tr>";
+         // $html .= "</a></article>";
         }
       }
-      $html .= "</tr></table>";
+	  $html .= "</section>";
+	  $html .= "</div>";
+      $html .= "</div>";
 		}
 		ELSE
 		{		
@@ -134,7 +151,7 @@
 			{
 				$sel = "";
 				IF ($did == $country['districts'][$i]['did']) $sel="SELECTED";
-				$html .= "<option $sel value=\"?country={$country['districts'][$i]['did']}\">{$country['districts'][$i]['name']}: {$country['districts'][$i]['description']}</option>";
+				$html .= "<option $sel value=\"?country={$country['districts'][$i]['did']}\">{".utf8_decode($country['districts'][$i]['name'])."}: {".utf8_decode($country['districts'][$i]['description'])."}</option>";
 			}
 			
 			$html .= "</select><br>";
@@ -145,7 +162,7 @@
   		$clubs = logic_get_clubs($did);
   		FOR ($i=0;$i<sizeof($clubs);$i++)
   		{
-  			$html .= "<option value=\"?cid={$clubs[$i]['cid']}\">{$clubs[$i]['name']}</option>";
+  			$html .= "<option value=\"?cid={$clubs[$i]['cid']}\">{".utf8_decode($clubs[$i]['name'])."}</option>";
   		}
   		
   		$html .= "</select><br>";
@@ -153,10 +170,8 @@
 		}
 		
 	  $html .= term_unwrap('district_calendar_show', array('name'=>$cal));
-		
-		
-		
-		// future meetings
+						
+		// future meetings        
 		$html .= term_unwrap('country_future_meetings', $country['meetings'], true);
 /*		
 		FOR ($i=0;$i<sizeof($country['meetings']);$i++)
@@ -176,7 +191,7 @@
 
 //		$html .= term_unwrap('country_future_minutes_item', array('data'=>json_encode($minutes)));
 		
-		
+		$html .="</div>";
 		RETURN $html;
 	}
 ?>

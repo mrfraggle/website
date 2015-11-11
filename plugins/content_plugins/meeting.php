@@ -1,4 +1,4 @@
-<?
+<?php
 	/*
 		content plugin minutes (c) 3kings.dk
 		
@@ -52,8 +52,6 @@
 	function content_handle_edit_minutes(&$meeting)
     {
     	$html = "";
-		
-		
 		
     		if ($_REQUEST['minutes_edit']=='save')
     		{
@@ -123,7 +121,7 @@
 			{
 				foreach ($meeting['images'] as $img)
 				{
-					$images .= "<p><img src=/uploads/meeting_image/?miid={$img['miid']}&w=100 width=100px><input type=checkbox name=deleteimage[] value={$img['miid']}>Slet</p>";
+					$images .= "<p><img src=/uploads/meeting_image/?miid={$img['miid']}&w=100 width=100px><input type=checkbox name=deleteimage[] value={$img['miid']} id=\"check1\"><label for=\"check1\">Slet</label></p>";
 				}
 			}
 			
@@ -137,7 +135,7 @@
         for($i=0;$i<sizeof($meeting['files']);$i++)
         {
           $f = $meeting['files'][$i];
-          $files .= "<li><a href=/uploads/meeting_file?mfid={$f['mfid']} target=_blank>{$f['filename']}</a><br><input type=checkbox name=deletefile[] value={$f['mfid']}>Slet";
+          $files .= "<li><a href=/uploads/meeting_file?mfid={$f['mfid']} target=_blank>{$f['filename']}</a><br><input type=checkbox name=deletefile[] value={$f['mfid']} id=\"check3\"><label for=\"check3\">Slet</label>";
         }
       }
       $files .= "</ul>";
@@ -156,7 +154,7 @@
 				case 'yt': $icon = "http://www.imagineersystems.com/products/plug-ins/++resource++imagineer.style.images/youtubeLogo.png"; break;
 				
 			}
-			$links_html .= "<a href='{$l['media_link']}' target=_blank><img src='{$icon}'></a> Slet: <input type=checkbox name=deletelink[] value={$l['mlid']}><br>";
+			$links_html .= "<a href='{$l['media_link']}' target=_blank><img src='{$icon}'></a><label for=\"check4\"> Slet:</label> <input type=checkbox name=deletelink[] value={$l['mlid']} id=\"check4\"><br>";
 		}
 		
 		$links_html .= "</ul>";
@@ -231,7 +229,7 @@
 		{
 			foreach ($meeting['images'] as $img)
 			{
-				$images .= "<p><img src=/uploads/meeting_image/?miid={$img['miid']} width=100px><input type=checkbox name=deleteimage[] value={$img['miid']}>Slet</p>";
+				$images .= "<p><img src=/uploads/meeting_image/?miid={$img['miid']} width=100px><input type=checkbox name=deleteimage[] value={$img['miid']} id=\"check2\"><label for=\"check2\">Slet</label></p>";
 			}
 		}
 		
@@ -244,7 +242,7 @@
 						<input type=hidden name=edit value=ok>
 						".term_unwrap('meeting_edit', $meeting)."
 						$images
-						<input type=submit value='".term('save_meeting')."'>
+						<input type=submit value='".term('save_meeting')."' class=\"btn\">
 						</form>
 						";
 		
@@ -335,7 +333,10 @@
 
 			
 			// show header
-			$html = term_unwrap('meeting_header', $meeting);
+			$html = '<div class="container meeting_technog">
+						<div class="col-xs-12 col-sm-8 col-md-10 right-part">
+							<article class="post single-post">';
+			$html .= term_unwrap('meeting_header', $meeting);
 			$may_edit_meeting = logic_may_edit_meeting($meeting['cid']) && !logic_meeting_minutes_finished($meeting);
 			if ($may_edit_meeting)
 			{
@@ -351,22 +352,55 @@
 			if (!empty($meeting['images'])) 
 			{
 				$top_img = array('img' => $meeting['images'][0]['miid']);
+				$html .= '<div class="post-heading">
+        					<div class="thumbnail">';
 				$html .= term_unwrap('meeting_top_image', $top_img);
+				$html .= '</div>
+							</div>';
 			}
 			
-					
+			
 			// show invitation
-			$html .= term_unwrap('meeting_invite', $meeting);
+			$html .= '<div class="post-content">';
+				$html .= '';
+					$html .= term_unwrap('meeting_invite1', $meeting);
+					$html .= '<div class="col-xs-12 col-sm-6">';
+					$html .= '<h3 class="title">Pligter</h3>';
+					$html .= '<dl class="dl-horizontal">';
+                    //echo "<pre>"; print_r($duties);
+					foreach($duties as $duty => $user)
+					{ 
+						if (strstr($duty,'ext')!==false)
+						{
+							$k = str_replace('uid', 'text', $duty);
+							$user['duty'] = strip_tags($meeting[$k]);
+						}
+						else
+						{
+							$user['duty'] = term($duty);
+						}
+						
+						$html .= term_unwrap('meeting_duty', $user);
+					}
+					
+					$html .= '</dl>';
+                    if(!empty($duties)) {
+					$html .= term_unwrap('meeting_duties', $user);
+                    }
+					$html .= '</div>';
+					$html .= term_unwrap('meeting_invite2', $meeting);
+				$html .= '';
+			$html .= '</div></article>';
 
 			$links = logic_get_meeting_links($meeting['mid']);
 			if (!empty($links))
 			{
 				$html .= term_unwrap('meeting_links', $links, true);
 			}
-	
+			
 			// show duties
-			$html .= term_unwrap('meeting_duties', $meeting);
-			foreach($duties as $duty => $user)
+			
+			/*foreach($duties as $duty => $user)
 			{
 				if (strstr($duty,'ext')!==false)
 				{
@@ -379,7 +413,9 @@
 				}
 				
 				$html .= term_unwrap('meeting_duty', $user);
-			}
+			}*/
+			
+			
 			
 			
 			
@@ -415,7 +451,7 @@
 				
 				foreach($attendance as $k => $v)
 				{
-					$v['mid'] = $meeting['mid'];
+                    $v['mid'] = $meeting['mid'];
 					if ($v['accepted']=='0')
 					{
 						$v['status'] = term('meeting_attendance_no');
@@ -448,9 +484,10 @@
 				
 				$attendance = fetch_meeting_attendance($meeting['mid']);
 				
+				
 				foreach($attendance as $k => $v)
 				{
-					$v['mid'] = $meeting['mid'];
+                    $v['mid'] = $meeting['mid'];
 					if ($v['accepted']=='0')
 					{
 						$v['status'] = term('meeting_attendance_no');
@@ -496,7 +533,9 @@
 					$html .= term_unwrap('meeting_bottom_image', $top_img);
 				}
 			}		
-			set_title($meeting['title']);		
+			set_title($meeting['title']);	
+			$html .= '</div>
+			</div>'	;
 			return $html;
 		}
 	}
